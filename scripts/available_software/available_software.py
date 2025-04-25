@@ -200,7 +200,7 @@ def filter_fn_eessi_modules(data: np.ndarray) -> np.ndarray:
 
 def targets_eessi() -> np.ndarray:
     """
-    Returns all the target names of EESSI.
+    Returns a sorted list of all the target names of EESSI.
     @return: target names
     """
     if not os.path.exists(EESSI_TOPDIR):
@@ -216,6 +216,8 @@ def targets_eessi() -> np.ndarray:
 
     for command in commands:
         targets = np.concatenate([targets, bash_command(command)])
+
+    targets.sort()
 
     return targets
 
